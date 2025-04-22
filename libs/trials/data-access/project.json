@@ -1,0 +1,26 @@
+{
+  "name": "data-access",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "/libs/trials/data-access/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/trials/data-access",
+        "main": "/libs/trials/data-access/src/index.ts",
+        "tsConfig": "/libs/trials/data-access/tsconfig.lib.json",
+        "assets": ["/libs/trials/data-access/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/trials/data-access/jest.config.ts"
+      }
+    }
+  }
+}

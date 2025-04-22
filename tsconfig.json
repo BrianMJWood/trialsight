@@ -13,7 +13,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@trialsight/data-access": ["/libs/trials/data-access/src/index.ts"],
+      "@trialsight/favourites-data-access": [
+        "/libs/favourites/data-access/src/index.ts"
+      ]
+    },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
