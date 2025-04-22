@@ -1,2 +1,18 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<h2>TrialSight</h2>
+
+<nav mat-tab-nav-bar [tabPanel]="tabPanel">
+  @for (link of navLinks; track link) {
+  <a
+    mat-tab-link
+    aria-hidden="true"
+    (click)="activeLink = link"
+    (keyup.enter)="activeLink = link"
+    [routerLink]="link.path"
+  >
+    {{ link.data?.['label'] }}
+  </a>
+  }
+</nav>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

@@ -1,0 +1,31 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2022",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@trialsight/data-access": ["/libs/trials/data-access/src/index.ts"],
+      "@trialsight/favourites-data-access": [
+        "/libs/favourites/data-access/src/index.ts"
+      ],
+      "@trialsight/favourites-list": [
+        "libs/favourites/feature/favourites-list/src/index.ts"
+      ],
+      "@trialsight/trials-list": [
+        "libs/trials/feature/trials-list/src/index.ts"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
