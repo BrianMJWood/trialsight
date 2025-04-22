@@ -15,9 +15,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trialsight/data-access": ["/libs/trials/data-access/src/index.ts"],
+      "@trialsight/trials-data-access": [
+        "libs/trials/data-access/src/index.ts"
+      ],
       "@trialsight/favourites-data-access": [
-        "/libs/favourites/data-access/src/index.ts"
+        "libs/favourites/data-access/src/index.ts"
       ],
       "@trialsight/favourites-list": [
         "libs/favourites/feature/favourites-list/src/index.ts"

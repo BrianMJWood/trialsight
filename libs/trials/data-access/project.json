@@ -1,5 +1,5 @@
 {
-  "name": "data-access",
+  "name": "@trialsight/trials-data-access",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "/libs/trials/data-access/src",
   "projectType": "library",

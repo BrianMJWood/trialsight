@@ -1,1 +1,9 @@
-<p>TrialsList works!</p>
+@if (trialStore.loading()) {
+<p>Loading…</p>
+} @else {
+<ul>
+  @for (trial of trialStore.display(); track $index) {
+  <li>{{ trial.id }} — {{ trial.title }} ({{ trial.status }})</li>
+  }
+</ul>
+}
