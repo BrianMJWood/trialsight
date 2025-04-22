@@ -1,4 +1,3 @@
-export * from './lib/data-access';
 export * from './lib/trials.service';
 export * from './lib/trials.store';
 export * from './lib/models/trial.model';

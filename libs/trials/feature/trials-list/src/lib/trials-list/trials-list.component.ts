@@ -13,5 +13,6 @@ export class TrialsListComponent {
   trialStore = inject(TrialsStore);
   constructor() {
     this.trialStore.loadTrials();
+    this.trialStore.startRotation();
   }
 }
