@@ -81,12 +81,21 @@ export const TrialsStore = signalStore(
     ),
 
     toggleFavourite: (trial: Trial) => {
-      const isFavorite = store.favourites().some((t) => t.id === trial.id);
-      const newFavorites = isFavorite
+      const isFavourite = store.favourites().some((t) => t.id === trial.id);
+      const newFavourites = isFavourite
         ? store.favourites().filter((t) => t.id !== trial.id)
         : [...store.favourites(), trial];
 
-      patchState(store, { favourites: newFavorites });
+      patchState(store, { favourites: newFavourites });
+    },
+
+    clearFavourites: () => {
+      patchState(store, { favourites: [] });
+    },
+
+    addCurrentViewToFavourites: () => {
+      const newFavourites = [...store.favourites(), ...store.display()];
+      patchState(store, { favourites: newFavourites });
     },
   }))
 );

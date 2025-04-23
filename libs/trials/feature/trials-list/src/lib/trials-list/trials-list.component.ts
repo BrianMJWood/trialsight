@@ -15,12 +15,12 @@ import { TrialsStore } from '@trialsight/trials-data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrialsListComponent implements OnInit {
-  trialStore = inject(TrialsStore);
+  trialsStore = inject(TrialsStore);
 
   ngOnInit(): void {
-    if (this.trialStore.display().length === 0) {
-      this.trialStore.loadTrials();
-      this.trialStore.startRotation();
+    if (this.trialsStore.display().length === 0) {
+      this.trialsStore.loadTrials();
+      this.trialsStore.startRotation();
     }
   }
 }

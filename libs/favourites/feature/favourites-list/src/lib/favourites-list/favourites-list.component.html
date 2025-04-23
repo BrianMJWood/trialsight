@@ -1,3 +1,6 @@
+@if (trialStore.favourites().length === 0) {
+<p>No favourites yet</p>
+} @else {
 <ul>
   @for (trial of trialStore.favourites(); track $index) {
   <li>
@@ -6,6 +9,8 @@
   </li>
   }
 </ul>
-@if (trialStore.error()) {
+<button (click)="trialStore.clearFavourites()">Clear all favourites</button>
+
+} @if (trialStore.error()) {
 <p>Error: {{ trialStore.error() }}</p>
 }
