@@ -1,5 +1,5 @@
 import { computed, inject } from '@angular/core';
-import { pipe, switchMap, tap, interval, from } from 'rxjs';
+import { pipe, switchMap, tap, interval } from 'rxjs';
 import {
   patchState,
   signalStore,
@@ -61,8 +61,7 @@ export const TrialsStore = signalStore(
                   display: initialDisplay,
                 });
               },
-              error: (err: any) =>
-                patchState(store, { error: err.message ?? 'Unexpected error' }),
+              error: () => patchState(store, { error: 'Unexpected error' }),
               finalize: () => patchState(store, { loading: false }),
             })
           )

@@ -6,3 +6,6 @@
   </li>
   }
 </ul>
+@if (trialStore.error()) {
+<p>Error: {{ trialStore.error() }}</p>
+}
