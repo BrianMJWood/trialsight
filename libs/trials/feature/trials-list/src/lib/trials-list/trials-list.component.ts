@@ -1,4 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrialsStore } from '@trialsight/trials-data-access';
 
@@ -7,6 +12,7 @@ import { TrialsStore } from '@trialsight/trials-data-access';
   imports: [CommonModule],
   templateUrl: './trials-list.component.html',
   styleUrl: './trials-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TrialsListComponent implements OnInit {
   trialStore = inject(TrialsStore);

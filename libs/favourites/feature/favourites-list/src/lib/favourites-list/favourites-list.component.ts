@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrialsStore } from '@trialsight/trials-data-access';
 
@@ -7,6 +7,7 @@ import { TrialsStore } from '@trialsight/trials-data-access';
   imports: [CommonModule],
   templateUrl: './favourites-list.component.html',
   styleUrl: './favourites-list.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FavouritesListComponent {
   trialStore = inject(TrialsStore);
