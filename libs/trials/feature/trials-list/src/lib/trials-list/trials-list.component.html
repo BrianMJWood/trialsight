@@ -2,8 +2,13 @@
 <p>Loading…</p>
 } @else {
 <ul>
-  @for (trial of trialStore.display(); track $index) {
-  <li>{{ trial.id }} — {{ trial.title }} ({{ trial.status }})</li>
+  @for (trial of trialStore.trialsWithFavourites(); track $index) {
+  <li>
+    <button (click)="trialStore.toggleFavourite(trial)">
+      @if (trial.favourite) { 🧡 } @else { 🤍 }
+    </button>
+    {{ trial.id }} — {{ trial.title }} ({{ trial.status }})
+  </li>
   }
 </ul>
 }

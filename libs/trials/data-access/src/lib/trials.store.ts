@@ -1,6 +1,12 @@
-import { inject } from '@angular/core';
-import { pipe, switchMap, tap, interval } from 'rxjs';
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { computed, inject } from '@angular/core';
+import { pipe, switchMap, tap, interval, from } from 'rxjs';
+import {
+  patchState,
+  signalStore,
+  withComputed,
+  withMethods,
+  withState,
+} from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { Trial } from './models/trial.model';
 import { TrialsService } from './trials.service';
@@ -9,6 +15,7 @@ import { tapResponse } from '@ngrx/operators';
 interface TrialsState {
   trials: Trial[];
   display: Trial[];
+  favourites: Trial[];
   loading: boolean;
   error: string | null;
 }
@@ -16,6 +23,7 @@ interface TrialsState {
 const initialState: TrialsState = {
   trials: [],
   display: [],
+  favourites: [],
   loading: false,
   error: null,
 };
@@ -25,7 +33,19 @@ function pickRandom<T>(source: readonly T[], count: number): T[] {
 }
 
 export const TrialsStore = signalStore(
+  { providedIn: 'root' },
   withState<TrialsState>(initialState),
+
+  withComputed((store) => ({
+    trialsWithFavourites: computed(() =>
+      store.display().map((trial) => ({
+        ...trial,
+        favourite: store
+          .favourites()
+          .some((favourite) => favourite.id === trial.id),
+      }))
+    ),
+  })),
 
   withMethods((store, trialsService = inject(TrialsService)) => ({
     loadTrials: rxMethod<void>(
@@ -60,5 +80,14 @@ export const TrialsStore = signalStore(
         })
       )
     ),
+
+    toggleFavourite: (trial: Trial) => {
+      const isFavorite = store.favourites().some((t) => t.id === trial.id);
+      const newFavorites = isFavorite
+        ? store.favourites().filter((t) => t.id !== trial.id)
+        : [...store.favourites(), trial];
+
+      patchState(store, { favourites: newFavorites });
+    },
   }))
 );

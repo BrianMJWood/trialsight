@@ -1,1 +1,8 @@
-<p>FavouritesList works!</p>
+<ul>
+  @for (trial of trialStore.favourites(); track $index) {
+  <li>
+    <button (click)="trialStore.toggleFavourite(trial)">🧡</button>
+    {{ trial.id }} — {{ trial.title }} ({{ trial.status }})
+  </li>
+  }
+</ul>

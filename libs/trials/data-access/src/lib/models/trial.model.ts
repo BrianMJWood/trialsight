@@ -3,4 +3,5 @@ export interface Trial {
   title: string;
   status: string;
   hasResults: boolean;
+  favourite: boolean;
 }

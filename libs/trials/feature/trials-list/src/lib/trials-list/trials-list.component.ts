@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrialsStore } from '@trialsight/trials-data-access';
 
@@ -7,12 +7,14 @@ import { TrialsStore } from '@trialsight/trials-data-access';
   imports: [CommonModule],
   templateUrl: './trials-list.component.html',
   styleUrl: './trials-list.component.css',
-  providers: [TrialsStore],
 })
-export class TrialsListComponent {
+export class TrialsListComponent implements OnInit {
   trialStore = inject(TrialsStore);
-  constructor() {
-    this.trialStore.loadTrials();
-    this.trialStore.startRotation();
+
+  ngOnInit(): void {
+    if (this.trialStore.display().length === 0) {
+      this.trialStore.loadTrials();
+      this.trialStore.startRotation();
+    }
   }
 }
