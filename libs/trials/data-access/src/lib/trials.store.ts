@@ -94,7 +94,12 @@ export const TrialsStore = signalStore(
     },
 
     addCurrentViewToFavourites: () => {
-      const newFavourites = [...store.favourites(), ...store.display()];
+      const trialsToAdd = store
+        .display()
+        .filter(
+          (trial) => !store.favourites().some((fav) => fav.id === trial.id)
+        );
+      const newFavourites = [...store.favourites(), ...trialsToAdd];
       patchState(store, { favourites: newFavourites });
     },
   }))
