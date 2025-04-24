@@ -1,0 +1,13 @@
+.trial {
+  display: flex;
+  margin: 1rem;
+}
+.trial-content {
+  align-self: center;
+  padding-left: 0.5rem;
+}
+
+.trials-add-all-button {
+  align-self: center;
+  margin-top: 1rem;
+}

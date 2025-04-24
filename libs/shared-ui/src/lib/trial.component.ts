@@ -8,10 +8,12 @@ import {
 import { CommonModule } from '@angular/common';
 import { Trial } from '@trialsight/utils';
 import { TrialsStore } from '@trialsight/trials-data-access';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'lib-trial',
-  imports: [CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule],
   templateUrl: './trial.component.html',
   styleUrl: './trial.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

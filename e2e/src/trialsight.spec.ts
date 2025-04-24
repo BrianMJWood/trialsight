@@ -28,13 +28,13 @@ test.describe('Trialsight tests', () => {
   });
 
   test('can add all displayed trials to favourites', async ({ page }) => {
-    await page.locator('#add-all-to-favourites').click();
+    await page.locator('#add-all-favourites').click();
     await page.locator('#tab-link-favourites').click();
     await expect(page.locator('.trial')).toHaveCount(10);
   });
 
   test('can clear all favourites', async ({ page }) => {
-    await page.locator('#add-all-to-favourites').click();
+    await page.locator('#add-all-favourites').click();
     await page.locator('#tab-link-favourites').click();
     await page.locator('#clear-favourites').click();
     await expect(page.locator('.trial')).toHaveCount(0);

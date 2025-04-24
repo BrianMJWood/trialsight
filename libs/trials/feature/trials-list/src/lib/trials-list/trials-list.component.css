@@ -1,0 +1,9 @@
+.trials-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-all-button {
+  align-self: center;
+  margin-top: 1rem;
+}

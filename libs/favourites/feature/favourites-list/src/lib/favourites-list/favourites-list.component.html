@@ -1,16 +1,22 @@
-@if (trialStore.favourites().length === 0) {
-<p>No favourites yet</p>
-} @else { @for (trial of trialStore.favourites(); track $index) {
-<lib-trial
-  [trial]="trial"
-  (toggleFavourite)="trialStore.toggleFavourite(trial)"
-/>
-}
+<div class="favourites-wrapper">
+  @for (trial of trialStore.favourites(); track $index) {
+  <lib-trial
+    [trial]="trial"
+    (toggleFavourite)="trialStore.toggleFavourite(trial)"
+  />
+  }
 
-<button id="clear-favourites" (click)="trialStore.clearFavourites()">
-  Clear all favourites
-</button>
+  <button
+    mat-raised-button
+    id="clear-favourites"
+    class="favourites-clear-button"
+    (click)="trialStore.clearFavourites()"
+    disabled="{{ !trialStore.favourites().length }}"
+  >
+    Clear all favourites
+  </button>
 
-} @if (trialStore.error()) {
-<p>Error: {{ trialStore.error() }}</p>
-}
+  @if (trialStore.error()) {
+  <p>Error: {{ trialStore.error() }}</p>
+  }
+</div>

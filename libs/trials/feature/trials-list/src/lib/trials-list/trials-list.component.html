@@ -1,18 +1,22 @@
-@if (trialsStore.loading()) {
-<p>Loading…</p>
-} @else { @for (trial of trialsStore.display(); track $index) {
-<lib-trial
-  [trial]="trial"
-  (toggleFavourite)="trialsStore.toggleFavourite(trial)"
-/>
-}
+<div class="trials-wrapper">
+  @if (trialsStore.loading()) {
+  <p>Loading…</p>
+  } @else { @for (trial of trialsStore.display(); track $index) {
+  <lib-trial
+    [trial]="trial"
+    (toggleFavourite)="trialsStore.toggleFavourite(trial)"
+  />
+  }
 
-<button
-  id="add-all-to-favourites"
-  (click)="trialsStore.addCurrentViewToFavourites()"
->
-  Add current trials to favourites!
-</button>
-} @if (trialsStore.error()) {
-<p>Error: {{ trialsStore.error() }}</p>
-}
+  <button
+    id="add-all-favourites"
+    class="add-all-button"
+    (click)="trialsStore.addCurrentViewToFavourites()"
+    mat-raised-button
+  >
+    Add visible trials to favourites
+  </button>
+  } @if (trialsStore.error()) {
+  <p>Error: {{ trialsStore.error() }}</p>
+  }
+</div>

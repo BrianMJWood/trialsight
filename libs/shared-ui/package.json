@@ -10,6 +10,7 @@
     "@angular/core": "~19.2.0",
     "@angular/common": "~19.2.0",
     "@trialsight/utils": "0.0.1",
-    "@trialsight/trials-data-access": "0.0.1"
+    "@trialsight/trials-data-access": "0.0.1",
+    "@angular/material": "^19.2.10"
   }
 }

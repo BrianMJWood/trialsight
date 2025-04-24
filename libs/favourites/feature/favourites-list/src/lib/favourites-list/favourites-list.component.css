@@ -1,0 +1,9 @@
+.favourites-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.favourites-clear-button {
+  align-self: center;
+  margin-top: 1rem;
+}
