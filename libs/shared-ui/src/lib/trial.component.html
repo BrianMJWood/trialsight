@@ -1,7 +1,7 @@
-<div class="flex items-center gap-2">
+<div id="trial-{{ trial().id }}" class="trial flex items-center gap-2">
   <button
     type="button"
-    id="toggle-favourite"
+    id="toggle-favourite-{{ trial().id }}"
     (click)="toggleFavourite.emit(trial())"
   >
     {{ trialStore.isFavourite()(trial().id) ? '🧡' : '🤍' }}

@@ -1,5 +1,5 @@
 {
-  "name": "@trialsight/data-access",
+  "name": "@trialsight/trials-data-access",
   "version": "0.0.1",
   "private": true,
   "type": "commonjs",
