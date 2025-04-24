@@ -6,10 +6,11 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrialsStore } from '@trialsight/trials-data-access';
+import { TrialComponent } from '@trialsight/shared-ui';
 
 @Component({
   selector: 'lib-trials-list',
-  imports: [CommonModule],
+  imports: [CommonModule, TrialComponent],
   templateUrl: './trials-list.component.html',
   styleUrl: './trials-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -1,16 +1,12 @@
 @if (trialsStore.loading()) {
 <p>Loading…</p>
-} @else {
-<ul>
-  @for (trial of trialsStore.trialsWithFavourites(); track $index) {
-  <li>
-    <button id="toggle-favourite" (click)="trialsStore.toggleFavourite(trial)">
-      @if (trial.favourite) { 🧡 } @else { 🤍 }
-    </button>
-    {{ trial.id }} — {{ trial.title }} ({{ trial.status }})
-  </li>
-  }
-</ul>
+} @else { @for (trial of trialsStore.display(); track $index) {
+<lib-trial
+  [trial]="trial"
+  (toggleFavourite)="trialsStore.toggleFavourite(trial)"
+/>
+}
+
 <button
   id="add-all-to-favourites"
   (click)="trialsStore.addCurrentViewToFavourites()"

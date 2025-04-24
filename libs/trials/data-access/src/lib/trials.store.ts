@@ -37,14 +37,11 @@ export const TrialsStore = signalStore(
   withState<TrialsState>(initialState),
 
   withComputed((store) => ({
-    trialsWithFavourites: computed(() =>
-      store.display().map((trial) => ({
-        ...trial,
-        favourite: store
-          .favourites()
-          .some((favourite) => favourite.id === trial.id),
-      }))
-    ),
+    isFavourite: computed(() => {
+      const favourites = store.favourites();
+      return (id: string) =>
+        favourites.some((favourite) => favourite.id === id);
+    }),
   })),
 
   withMethods((store, trialsService = inject(TrialsService)) => ({
@@ -81,12 +78,14 @@ export const TrialsStore = signalStore(
     ),
 
     toggleFavourite: (trial: Trial) => {
-      const isFavourite = store.favourites().some((t) => t.id === trial.id);
-      const newFavourites = isFavourite
-        ? store.favourites().filter((t) => t.id !== trial.id)
-        : [...store.favourites(), trial];
+      const favourites = store.favourites();
+      const isFavourite = favourites.some((t) => t.id === trial.id);
 
-      patchState(store, { favourites: newFavourites });
+      patchState(store, {
+        favourites: isFavourite
+          ? favourites.filter((t) => t.id !== trial.id)
+          : [...favourites, trial],
+      });
     },
 
     clearFavourites: () => {
@@ -99,8 +98,10 @@ export const TrialsStore = signalStore(
         .filter(
           (trial) => !store.favourites().some((fav) => fav.id === trial.id)
         );
-      const newFavourites = [...store.favourites(), ...trialsToAdd];
-      patchState(store, { favourites: newFavourites });
+
+      patchState(store, {
+        favourites: [...store.favourites(), ...trialsToAdd],
+      });
     },
   }))
 );

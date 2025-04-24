@@ -21,6 +21,7 @@
       "@trialsight/favourites-list": [
         "libs/favourites/feature/favourites-list/src/index.ts"
       ],
+      "@trialsight/shared-ui": ["libs/shared-ui/src/index.ts"],
       "@trialsight/trials-data-access": [
         "libs/trials/data-access/src/index.ts"
       ],

@@ -1,0 +1,11 @@
+<div class="flex items-center gap-2">
+  <button
+    type="button"
+    id="toggle-favourite"
+    (click)="toggleFavourite.emit(trial())"
+  >
+    {{ trialStore.isFavourite()(trial().id) ? '🧡' : '🤍' }}
+  </button>
+
+  {{ trial().id }} — {{ trial().title }} ({{ trial().status }})
+</div>
