@@ -8,7 +8,7 @@ import {
   withState,
 } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { Trial } from './models/trial.model';
+import { Trial } from '@trialsight/utils';
 import { TrialsService } from './trials.service';
 import { tapResponse } from '@ngrx/operators';
 

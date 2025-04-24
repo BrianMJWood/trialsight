@@ -5,7 +5,7 @@ import {
   platformBrowserDynamicTesting,
 } from '@angular/platform-browser-dynamic/testing';
 import { TrialsService } from './trials.service';
-import { Trial } from './models/trial.model';
+import { mockTrials } from '@trialsight/utils';
 import { of, throwError } from 'rxjs';
 import 'zone.js';
 
@@ -13,14 +13,6 @@ TestBed.initTestEnvironment(
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting()
 );
-
-const mockTrials: Trial[] = Array.from({ length: 100 }, (_, i) => ({
-  id: `test-trial-${i}`,
-  title: `Test Trial ${i}`,
-  status: 'Active',
-  hasResults: false,
-  favourite: false,
-}));
 
 describe('TrialsStore', () => {
   let store: InstanceType<typeof TrialsStore>;

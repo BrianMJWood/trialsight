@@ -1,5 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FavouritesListComponent } from './favourites-list.component';
+import { TrialsStore, TrialsService } from '@trialsight/trials-data-access';
+import { of } from 'rxjs';
+import { mockTrials } from '@trialsight/utils';
 
 describe('FavouritesListComponent', () => {
   let component: FavouritesListComponent;
@@ -8,6 +11,15 @@ describe('FavouritesListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FavouritesListComponent],
+      providers: [
+        TrialsStore,
+        {
+          provide: TrialsService,
+          useValue: {
+            fetchTrials: () => of(mockTrials),
+          },
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FavouritesListComponent);

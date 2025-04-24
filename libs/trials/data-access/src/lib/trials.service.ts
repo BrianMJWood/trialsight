@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { map } from 'rxjs';
-import { Trial } from './models/trial.model';
-import { TrialData } from './models/trial-data.model';
+import { Trial } from '@trialsight/utils';
+import { TrialData } from '@trialsight/utils';
 
 @Injectable({ providedIn: 'root' })
 export class TrialsService {

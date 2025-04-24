@@ -15,18 +15,19 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trialsight/trials-data-access": [
-        "libs/trials/data-access/src/index.ts"
-      ],
       "@trialsight/favourites-data-access": [
         "libs/favourites/data-access/src/index.ts"
       ],
       "@trialsight/favourites-list": [
         "libs/favourites/feature/favourites-list/src/index.ts"
       ],
+      "@trialsight/trials-data-access": [
+        "libs/trials/data-access/src/index.ts"
+      ],
       "@trialsight/trials-list": [
         "libs/trials/feature/trials-list/src/index.ts"
-      ]
+      ],
+      "@trialsight/utils": ["libs/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
