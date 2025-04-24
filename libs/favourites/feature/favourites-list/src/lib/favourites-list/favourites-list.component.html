@@ -9,7 +9,9 @@
   </li>
   }
 </ul>
-<button (click)="trialStore.clearFavourites()">Clear all favourites</button>
+<button id="clear-favourites" (click)="trialStore.clearFavourites()">
+  Clear all favourites
+</button>
 
 } @if (trialStore.error()) {
 <p>Error: {{ trialStore.error() }}</p>

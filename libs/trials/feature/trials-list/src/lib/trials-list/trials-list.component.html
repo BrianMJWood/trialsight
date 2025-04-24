@@ -4,14 +4,17 @@
 <ul>
   @for (trial of trialsStore.trialsWithFavourites(); track $index) {
   <li>
-    <button (click)="trialsStore.toggleFavourite(trial)">
+    <button id="toggle-favourite" (click)="trialsStore.toggleFavourite(trial)">
       @if (trial.favourite) { 🧡 } @else { 🤍 }
     </button>
     {{ trial.id }} — {{ trial.title }} ({{ trial.status }})
   </li>
   }
 </ul>
-<button (click)="trialsStore.addCurrentViewToFavourites()">
+<button
+  id="add-all-to-favourites"
+  (click)="trialsStore.addCurrentViewToFavourites()"
+>
   Add current trials to favourites!
 </button>
 } @if (trialsStore.error()) {

@@ -3,6 +3,7 @@
 <nav mat-tab-nav-bar [tabPanel]="tabPanel">
   @for (link of navLinks; track link) {
   <a
+    id="tab-link-{{ link.path }}"
     mat-tab-link
     aria-hidden="true"
     (click)="activeLink = link"
