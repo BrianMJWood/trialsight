@@ -13,18 +13,17 @@ export class TrialsService {
     '&pageSize=100&format=json';
 
   fetchTrials() {
-    return this.http.get<{ studies: TrialData[] }>(this.url).pipe(
-      map(({ studies }) =>
-        studies.map(
-          (study) =>
-            ({
-              id: study.protocolSection.identificationModule.nctId,
-              title: study.protocolSection.identificationModule.briefTitle,
-              status: study.protocolSection.statusModule.overallStatus,
-              hasResults: study.hasResults,
-            } as Trial)
-        )
-      )
-    );
+    return this.http
+      .get<{ studies: TrialData[] }>(this.url)
+      .pipe(map(({ studies }) => studies.map(this.mapStudyToTrial)));
+  }
+
+  private mapStudyToTrial(study: TrialData): Trial {
+    return {
+      id: study.protocolSection.identificationModule.nctId,
+      title: study.protocolSection.identificationModule.briefTitle,
+      status: study.protocolSection.statusModule.overallStatus,
+      hasResults: study.hasResults,
+    } as Trial;
   }
 }
